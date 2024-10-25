@@ -76,3 +76,16 @@ def contact(request, contact_id):
         'contact/contact.html',
         context
     )
+
+
+def teste(request):
+    site_title = 'Somente para testes'
+    context = {
+        'site_title': site_title
+    }
+
+    return render(
+        request,
+        'contact/teste.html',
+        context
+    )
