@@ -8,6 +8,9 @@ from django.utils import timezone
 # category (foreign key), show (boolean), picture (imagem)
 # owner (foreign key)
 
+# string is limited to 255 - CharField
+# text not - TextField
+
 
 class Category(models.Model):
     class Meta:
