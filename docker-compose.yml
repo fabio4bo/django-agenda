@@ -1,0 +1,22 @@
+services:
+  agenda_app:
+    container_name: agenda_app
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./agenda_app:/agenda_app
+      - ./data/web/static:/data/web/static/
+      - ./data/web/media:/data/web/media/
+    env_file:
+      - ./dotenv/.env
+    depends_on:
+      - psql
+  psql:
+    container_name: psql
+    image: postgres:17-alpine3.20
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data/
+    env_file:
+      - ./dotenv/.env
