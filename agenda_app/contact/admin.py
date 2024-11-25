@@ -9,6 +9,7 @@ from contact import models
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
         'id',
+        '__str__',
         'first_name',
         'last_name',
         'phone',
@@ -25,5 +26,5 @@ class ContactAdmin(admin.ModelAdmin):
     list_editable = ('last_name',)
     list_display_links = (
         'id',
-        'phone',
+        '__str__',
     )
