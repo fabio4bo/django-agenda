@@ -28,3 +28,9 @@ class ContactAdmin(admin.ModelAdmin):
         'id',
         '__str__',
     )
+
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    ordering = ('-id',)
