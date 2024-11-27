@@ -132,7 +132,7 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = DATA_DIR / 'static'  # collectstatic
 
-MEDIA_URL = 'media/'
+MEDIA_URL = 'media/'  # uploaded by users
 MEDIA_ROOT = DATA_DIR / 'media'
 
 # Default primary key field type

@@ -26,7 +26,7 @@ def contact(request, contact_id):
     # filter - queryset
     # single_contact = Contact.objects.get(pk=contact_id)
     # single_contact = Contact.objects.filter(pk=contact_id).first()
-    # single_contact = get_object_or_404(Contact.objects.filter(pk=contact_id, show=True))
+    # single_contact = get_object_or_404(Contact.objects.filter(pk=contact_id, show=True))  # AND
     single_contact = get_object_or_404(Contact, pk=contact_id, show=True)  # AND
 
     context = {
