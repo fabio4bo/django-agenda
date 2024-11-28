@@ -10,6 +10,12 @@ class ContactForm(forms.ModelForm):
         ),
         label='Your First Name:',
     )
+    new_widget = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'class': 'class-a class-b', 'placeholder': 'I didn\'t come from models.'}
+        ),
+        label='I am a new widget:',
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
