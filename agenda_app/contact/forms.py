@@ -11,6 +11,14 @@ class ContactForm(forms.ModelForm):
             'last_name',
             'phone',
         )
+        widgets = {
+            'phone': forms.TextInput(
+                attrs={  # html
+                    'class': 'class-a class-b',
+                    'placeholder': 'Phone. This is from a widget.',
+                }
+            )
+        }
 
     def clean(self):  # access to the data before saving.
         # cleaned_data = self.cleaned_data
