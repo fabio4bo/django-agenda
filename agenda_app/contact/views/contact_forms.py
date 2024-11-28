@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.core.exceptions import ValidationError
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 
@@ -15,6 +16,25 @@ class ContactForm(forms.ModelForm):
             'last_name',
             'phone',
         )
+    def clean(self):  # access to the data before saving.
+        cleaned_data = self.cleaned_data
+        # print(cleaned_data)
+
+        self.add_error(
+            'first_name',
+            ValidationError(
+                'Error Message',
+                code='invalid'
+            )
+        )
+        self.add_error(
+            None,  # non_field_errors
+            ValidationError(
+                'Error Message',
+                code='invalid'
+            )
+        )
+        return super().clean()
 
 
 def create(request):
