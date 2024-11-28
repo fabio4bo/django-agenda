@@ -4,13 +4,22 @@ from . import models
 
 
 class ContactForm(forms.ModelForm):
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'class': 'class-a class-b', 'placeholder': 'First name.'}
+        ),
+        label='Your First Name:',
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['phone'].widget.attrs.update({  # html
-            'class': 'class-a class-b',
-            'placeholder': 'Phone. This is from a widget using __init__.',
-        })
+        self.fields['phone'].widget.attrs.update(
+            {  # html
+                'class': 'class-a class-b',
+                'placeholder': 'Phone. This is from a widget using __init__.',
+            }
+        )
 
     class Meta:
         model = models.Contact
