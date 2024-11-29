@@ -56,10 +56,10 @@ class ContactForm(forms.ModelForm):
                 ),
             )
 
-        self.add_error('first_name', ValidationError('Error Message', code='invalid'))
-        self.add_error(
-            None, ValidationError('Error Message', code='invalid')  # non_field_errors
-        )
+        # self.add_error('first_name', ValidationError('Error Message 1', code='invalid'))
+        # self.add_error(
+        #     None, ValidationError('Error Message: non_field', code='invalid')  # non_field_errors
+        # )
         return super().clean()
 
     def clean_last_name(self):
