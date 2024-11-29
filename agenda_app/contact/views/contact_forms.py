@@ -9,7 +9,9 @@ def create(request):
         context = {'form': form}
 
         if form.is_valid():  # without errors
-            form.save()
+            contact = form.save(commit=False)
+            contact.show = False
+            contact.save()
     else:
         context = {'form': ContactForm()}  # empty; GET
     print(request.method)
