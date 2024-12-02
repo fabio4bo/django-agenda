@@ -28,11 +28,15 @@ def create(request):
 
 
 def update(request, contact_id):
-    contact = get_object_or_404(Contact, pk=contact_id, show=True)  # don't forget the pk
+    contact = get_object_or_404(
+        Contact, pk=contact_id, show=True
+    )  # don't forget the pk
     form_action = reverse('contact:update', args=(contact_id,))
 
     if request.method == 'POST':
-        form = ContactForm(request.POST, instance=contact)  # instance of contact that exists
+        form = ContactForm(
+            request.POST, instance=contact
+        )  # instance of contact that exists
         context = {
             'form': form,
             'form_action': form_action,
@@ -48,3 +52,22 @@ def update(request, contact_id):
         }
 
     return render(request, 'contact/create.html', context)
+
+
+def delete(request, contact_id):
+    contact = get_object_or_404(Contact, pk=contact_id, show=True)
+
+    confirmation = request.POST.get('confirmation', 'no')
+
+    if confirmation == 'yes':
+        contact.delete()
+        return redirect('contact:index')
+
+    return render(
+        request,
+        'contact/contact.html',
+        {
+            'contact': contact,
+            'confirmation': confirmation,
+        },
+    )
