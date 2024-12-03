@@ -29,6 +29,14 @@ class ContactForm(forms.ModelForm):
                 'placeholder': 'Phone. This is from a widget using __init__.',
             }
         )
+    
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+            }
+        )
+    )
 
     class Meta:
         model = models.Contact
@@ -39,6 +47,7 @@ class ContactForm(forms.ModelForm):
             'email',
             'description',
             'category',
+            'picture',
         )
 
     def clean(self):  # access to the data before saving.
