@@ -18,6 +18,7 @@ class ContactForm(forms.ModelForm):
             }
         ),
         label='I am a new widget:',
+        required=False,
     )
 
     def __init__(self, *args, **kwargs):
@@ -29,7 +30,7 @@ class ContactForm(forms.ModelForm):
                 'placeholder': 'Phone. This is from a widget using __init__.',
             }
         )
-    
+
     picture = forms.ImageField(
         widget=forms.FileInput(
             attrs={
