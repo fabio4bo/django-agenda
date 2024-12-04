@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib import messages, auth
 from contact.forms import RegisterForm
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -35,7 +35,10 @@ def login_view(request):
 
         if form.is_valid():
             user = form.get_user()
-            print(user)
+            auth.login(request, user)  # really login
+            messages.success(request, 'You have successfully logged in.')
+            return redirect('contact:index')
+        messages.error(request, 'Invalid login!')
 
     return render(
         request,
@@ -44,3 +47,8 @@ def login_view(request):
             'form': form,
         },
     )
+
+
+def logout_view(request):
+    auth.logout(request)
+    return redirect('contact:login')

@@ -3,9 +3,14 @@
 {% block content %}
   <div class="form-wrapper">
 
-    <h2>Login {{ user }} {{ user.is_authenticated }}</h2>
+    <h2>Login</h2>
 
-    {% include "contact/partials/_user-form.html" %}
+    {% if user.is_authenticated %}
+        <p>You have logged in: <strong>{{ user }}</strong></p>
+        <p><a href="{% url "contact:logout" %}">Logout here</a></p>
+    {% else %}
+        {% include "contact/partials/_user-form.html" %}
+    {% endif %}
     
   </div>
 {% endblock content %}
