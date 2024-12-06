@@ -19,6 +19,12 @@
     </p>
     {% endif %}
 
+    {% if contact.owner %}
+    <p>
+        <b>Owner: </b>{{ contact.owner }}
+    </p>
+    {% endif %}
+
     <div class="contact-links">
         <a class="btn btn-link" href="{% url "contact:update" contact.id %}">Update</a>
 
