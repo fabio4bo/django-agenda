@@ -19,6 +19,7 @@
             </thead>
             <tbody>
                 {% for contact in page_obj %}
+                {% if contact.owner == user %}
                     <tr class="table-row">
                         <td class="table-cel">
                             {{  contact.id  }}
@@ -46,6 +47,7 @@
                                 {{  contact.email  }}
                         </td>
                     </tr>
+                {% endif %}
                 {% endfor %}
             </tbody>
         </table>
